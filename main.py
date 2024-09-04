@@ -1,14 +1,9 @@
 import gradio as gr
 
+hello_world = gr.Interface(lambda name: "Hello " + name, "text", "text")
+bye_world = gr.Interface(lambda name: "Bye " + name, "text", "text")
 
-def greet(name, intensity):
-    return "Hello, " + name + "!" * int(intensity)
+demo = gr.TabbedInterface([hello_world, bye_world], ["Hello World", "Bye World"])
 
-
-demo = gr.Interface(
-    fn=greet,
-    inputs=["text", "slider"],
-    outputs=["text"],
-)
-
-demo.launch()
+if __name__ == "__main__":
+    demo.launch()
